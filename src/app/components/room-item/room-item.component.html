@@ -1,0 +1,123 @@
+<div class="container"></div>
+<div class="container">
+  <div class="pt-5 pb-5">
+    <div *ngIf="!submitted">
+      <div class="card border-0 cs-shadow rounded feedback">
+        <div class="card-body">
+          <div class="header pb-3">
+            <h3 style="color: #0080ff">Feedback For {{ roomData.name }}</h3>
+            <p>
+              Please fill out this brief feedback form so we can ensure a tap
+              qualify experience for all of our visitors.
+            </p>
+          </div>
+          <form [formGroup]="submitForm" (submit)="sendMessage()">
+            <input
+              type="hidden"
+              [ngModel]="roomID"
+              name="room_id"
+              formControlName="room_id"
+              value="{{ roomID }}"
+            />
+            <div class="title pt-3 pb-3">
+              <h5 class="pb-2">
+                <span>*</span>
+                Title
+              </h5>
+              <div class="pb-3">
+                <input
+                  formControlName="title"
+                  type="text"
+                  class="form-control form-control-lg shadow-sm"
+                  placeholder="Title"
+                  name="title"
+                />
+              </div>
+            </div>
+            <div class="feedback pt-3 pb-3">
+              <h5 class="pb-2">
+                <span>*</span>
+                Feedback Message
+              </h5>
+              <div class="pb-3">
+                <textarea
+                  formControlName="message"
+                  name="message"
+                  id=""
+                  rows="5"
+                  class="form-control form-control-lg"
+                  placeholder="Message"
+                ></textarea>
+              </div>
+              <p class="text-muted">
+                Please feel free to send us your feedback or request about our
+                services so far, Make sure to include hopes, fears, expectation
+              </p>
+            </div>
+            <div class="situation pt-3 pb-3">
+              <h5 class="pb-2">
+                <span>*</span>
+                Situation
+              </h5>
+              <div class="row">
+                <div class="col-md-4 pb-3">
+                  <div class="form-check form-check-inline">
+                    <input
+                      formControlName="feedbackLevel"
+                      class="form-check-input"
+                      type="radio"
+                      name="feedbackLevel"
+                      id="High"
+                      value="High"
+                    />
+                    <label class="form-check-label" for="High"> High </label>
+                  </div>
+                </div>
+                <div class="col-md-4 pb-3">
+                  <div class="form-check form-check-inline">
+                    <input
+                      formControlName="feedbackLevel"
+                      class="form-check-input"
+                      type="radio"
+                      name="feedbackLevel"
+                      id="Normal"
+                      value="Medium"
+                    />
+                    <label class="form-check-label" for="Normal">Normal </label>
+                  </div>
+                </div>
+                <div class="col-md-4 pb-3">
+                  <div class="form-check form-check-inline">
+                    <input
+                      formControlName="feedbackLevel"
+                      class="form-check-input"
+                      type="radio"
+                      name="feedbackLevel"
+                      id="Low"
+                      value="Low"
+                    />
+                    <label class="form-check-label" for="Low"> Low</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="submit text-right pt-3">
+              <button type="submit" class="btn btn-lg btn-primary col-12">
+                Send
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div *ngIf="submitted">
+        <h4 class="mb-4">FeedBack Send Successfully!</h4>
+        <button class="btn btn-lg btn-dark col-md-4" (click)="newMsg()">
+          Again
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
