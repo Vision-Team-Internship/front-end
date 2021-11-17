@@ -7,9 +7,10 @@ import { FormComponent } from './components/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomItemComponent } from './components/room-item/room-item.component';
+import { RoomComponent } from './components/room/room.component';
 
 @NgModule({
-  declarations: [AppComponent, FormComponent, RoomItemComponent],
+  declarations: [AppComponent, FormComponent, RoomItemComponent, RoomComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
