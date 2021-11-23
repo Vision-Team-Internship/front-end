@@ -44,6 +44,10 @@ export class FormComponent implements OnInit {
     });
   }
 
+  test() {
+    console.log('test');
+  }
+
   setFloorID(floor: any) {
     console.log('Floor', floor);
     this.floorID = floor;
@@ -93,6 +97,7 @@ export class FormComponent implements OnInit {
         console.log(response);
         this.submitted = true;
         this.floorID = '';
+        this.departmentID = '';
       },
       (error) => {
         console.log(error);
