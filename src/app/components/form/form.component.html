@@ -47,7 +47,11 @@
               - Room
             </button>
           </div>
-          <form [formGroup]="submitForm" (submit)="sendMessage()">
+          <form
+            [formGroup]="submitForm"
+            (submit)="sendMessage()"
+            onsubmit="myButton.disabled = true; return true;"
+          >
             <div class="floor pt-3 pb-3">
               <h5 class="pb-2">
                 <span>*</span> In General, Which Floor do you want to feedback ?
@@ -209,7 +213,11 @@
               </div>
             </div>
             <div class="submit text-right pt-3">
-              <button type="submit" class="btn btn-lg btn-primary col-12">
+              <button
+                name="myButton"
+                type="submit"
+                class="btn btn-lg btn-primary col-12"
+              >
                 Send
               </button>
             </div>
