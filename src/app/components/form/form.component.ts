@@ -120,6 +120,7 @@ export class FormComponent implements OnInit {
   }
   hideDP() {
     this.displayDP = false;
+    this.departmentID = null;
     this.submitForm.controls['department_id'].setValue('');
   }
   hideRoom() {
