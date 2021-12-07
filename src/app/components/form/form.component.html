@@ -67,6 +67,7 @@
                       id="{{ item.name }}"
                       value="{{ item._id }}"
                       (change)="setFloorID(item._id)"
+                      required
                     />
                     <label class="form-check-label" for="{{ item.name }}">
                       {{ item.name }}
@@ -142,6 +143,7 @@
                   class="form-control form-control-lg shadow-sm"
                   placeholder="Title"
                   name="title"
+                  required
                 />
               </div>
             </div>
@@ -158,6 +160,7 @@
                   rows="5"
                   class="form-control form-control-lg"
                   placeholder="Message"
+                  required
                 ></textarea>
               </div>
               <p class="text-muted">
@@ -217,6 +220,7 @@
                 name="myButton"
                 type="submit"
                 class="btn btn-lg btn-primary col-12"
+                [disabled]="!submitForm.valid"
               >
                 Send
               </button>
