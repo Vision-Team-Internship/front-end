@@ -9,7 +9,7 @@ import { Floor } from 'src/model';
   styleUrls: ['./floor.component.css'],
 })
 export class FloorComponent implements OnInit {
-  displayFloor = false;
+  deleteBtn = false;
 
   floors: Floor[] = [];
   id: any;
@@ -22,7 +22,7 @@ export class FloorComponent implements OnInit {
     });
   }
 
-  deleteTutorial(id: any) {
+  deleteFloor(id: any) {
     this.floorService.delete(id).subscribe(
       (response) => {
         console.log(response, id);
@@ -34,10 +34,12 @@ export class FloorComponent implements OnInit {
     );
   }
 
-  showAddFloor() {
-    this.displayFloor = !this.displayFloor;
+  displayDeleteBtn() {
+    this.deleteBtn = true;
   }
-
+  doneDeleteBtn() {
+    this.deleteBtn = false;
+  }
   addFloor(floor: Floor) {
     this.floorService.createFloor(floor).subscribe(
       (response) => {

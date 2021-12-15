@@ -1,27 +1,40 @@
-<div class="container">
-  <div class="pb-5 pt-3">
-    <h4>All Floor</h4>
-    <button class="btn btn-success" (click)="showAddFloor()">Add Floor</button>
-    <div *ngIf="displayFloor">
-      <app-floor-add (onAddFloor)="addFloor($event)"></app-floor-add>
-    </div>
-    <hr />
-    <div class="list-floor">
-      <div class="row rooms" *ngFor="let item of floors">
-        <div class="col-md-3 pb-3">
-          <h4>
-            {{ item.name }}
-          </h4>
-          <hr />
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-dark">Update</button>
-          <button
-            class="btn btn-outline-danger ml-2"
-            (click)="deleteTutorial(item._id)"
-          >
-            Delete
-          </button>
+<div>
+  <app-floor-add (onAddFloor)="addFloor($event)"></app-floor-add>
+  <button type="button" class="btn btn-danger" (click)="displayDeleteBtn()">
+    Delete Floor
+  </button>
+  <button
+    type="button"
+    class="btn btn-secondary ml-3"
+    (click)="doneDeleteBtn()"
+  >
+    Done
+  </button>
+  <hr />
+  <div class="list-floor">
+    <div class="row text-center">
+      <div class="col-md-3 pb-3" *ngFor="let item of floors">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div
+                class="col-md-10"
+                [ngClass]="deleteBtn ? 'col-md-10' : 'col-md-12'"
+              >
+                <h4>
+                  {{ item.name }}
+                </h4>
+              </div>
+              <div class="col-md-2" *ngIf="deleteBtn">
+                <button
+                  class="btn btn-sm btn-dark"
+                  (click)="deleteFloor(item._id)"
+                >
+                  X
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

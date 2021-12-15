@@ -1,1 +1,68 @@
-<p>dashboard works!</p>
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar">
+    <div class="sticky-top">
+      <div class="p-4 overflow">
+        <div class="mt-2">
+          <div class="card bg-dark">
+            <div class="p-4">
+              <h3>Admin</h3>
+            </div>
+          </div>
+        </div>
+        <ul class="mb-5 list-unstyled components">
+          <li>
+            <a routerLink="/d/floor">
+              <div>
+                <span class="pl-3">Dashboard</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a>
+              <div>
+                <span class="pl-3">Users</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a>
+              <div>
+                <span class="pl-3">Sellers</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a>
+              <div>
+                <span class="pl-3">Products</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div>
+                <span class="pl-3">Brands</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="content">
+    <ul class="nav justify-content-end bg-light shadow-sm p-1 pr-4">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Notifications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+    <div class="ml-4 mr-4 mt-4">
+      <app-floor></app-floor>
+    </div>
+  </div>
+</div>
