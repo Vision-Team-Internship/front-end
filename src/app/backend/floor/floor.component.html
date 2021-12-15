@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="pb-5 pt-3">
+    <h4>All Floor</h4>
+    <button class="btn btn-success" (click)="showAddFloor()">Add Floor</button>
+    <div *ngIf="displayFloor">
+      <app-floor-add (onAddFloor)="addFloor($event)"></app-floor-add>
+    </div>
+    <hr />
+    <div class="list-floor">
+      <div class="row rooms" *ngFor="let item of floors">
+        <div class="col-md-3 pb-3">
+          <h4>
+            {{ item.name }}
+          </h4>
+          <hr />
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-dark">Update</button>
+          <button
+            class="btn btn-outline-danger ml-2"
+            (click)="deleteTutorial(item._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

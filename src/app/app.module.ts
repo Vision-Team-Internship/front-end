@@ -8,9 +8,26 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomItemComponent } from './components/room-item/room-item.component';
 import { RoomComponent } from './components/room/room.component';
+import { DashboardComponent } from './backend/dashboard/dashboard.component';
+import { FloorComponent } from './backend/floor/floor.component';
+import { DepartmentComponent } from './backend/department/department.component';
+import { FloorEditComponent } from './backend/floor/floor-edit/floor-edit.component';
+import { FloorAddComponent } from './backend/floor/floor-add/floor-add.component';
+import { AuthComponent } from './backend/auth/auth.component';
 
 @NgModule({
-  declarations: [AppComponent, FormComponent, RoomItemComponent, RoomComponent],
+  declarations: [
+    AppComponent,
+    FormComponent,
+    RoomItemComponent,
+    RoomComponent,
+    DashboardComponent,
+    FloorComponent,
+    DepartmentComponent,
+    FloorEditComponent,
+    FloorAddComponent,
+    AuthComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
