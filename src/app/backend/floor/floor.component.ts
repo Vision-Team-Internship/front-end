@@ -23,7 +23,7 @@ export class FloorComponent implements OnInit {
   }
 
   deleteFloor(id: any) {
-    this.floorService.delete(id).subscribe(
+    this.floorService.deleteFloor(id).subscribe(
       (response) => {
         console.log(response, id);
         this.floors = this.floors.filter((floor) => floor._id != id);

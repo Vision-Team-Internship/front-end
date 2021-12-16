@@ -20,9 +20,11 @@ export class Service {
   public getfloor(): Observable<Floor[]> {
     return this.http.get<Floor[]>(this.floorApi);
   }
+
   public getDepartment(): Observable<Department[]> {
     return this.http.get<Department[]>(this.departmentApi);
   }
+
   public getRoom(): Observable<Room[]> {
     return this.http.get<Room[]>(this.roomApi);
   }

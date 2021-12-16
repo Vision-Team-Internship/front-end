@@ -1,12 +1,18 @@
 <div>
   <app-floor-add (onAddFloor)="addFloor($event)"></app-floor-add>
-  <button type="button" class="btn btn-danger" (click)="displayDeleteBtn()">
+  <button
+    type="button"
+    class="btn btn-danger"
+    (click)="displayDeleteBtn()"
+    [disabled]="deleteBtn"
+  >
     Delete Floor
   </button>
   <button
     type="button"
     class="btn btn-secondary ml-3"
     (click)="doneDeleteBtn()"
+    *ngIf="deleteBtn"
   >
     Done
   </button>
@@ -17,10 +23,7 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div
-                class="col-md-10"
-                [ngClass]="deleteBtn ? 'col-md-10' : 'col-md-12'"
-              >
+              <div [ngClass]="deleteBtn ? 'col-md-10' : 'col-md-12'">
                 <h4>
                   {{ item.name }}
                 </h4>

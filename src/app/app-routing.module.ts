@@ -6,6 +6,7 @@ import { RoomItemComponent } from './components/room-item/room-item.component';
 import { RoomComponent } from './components/room/room.component';
 import { AuthComponent } from './backend/auth/auth.component';
 import { DashboardComponent } from './backend/dashboard/dashboard.component';
+import { DepartmentComponent } from './backend/department/department.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'd/login',
     component: AuthComponent,
+  },
+  {
+    path: 'd/depart',
+    component: DepartmentComponent,
   },
 ];
 
