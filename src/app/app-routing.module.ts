@@ -14,6 +14,14 @@ const routes: Routes = [
     component: FormComponent,
   },
   {
+    path: 'd',
+    component: DashboardComponent,
+    loadChildren: () =>
+      import('./backend/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
     path: 'room/:id',
     component: RoomItemComponent,
   },
@@ -21,26 +29,16 @@ const routes: Routes = [
     path: 'room',
     component: RoomComponent,
   },
-  {
-    path: 'd',
-    component: DashboardComponent,
-  },
-  // {
-  //   path: 'd/floor',
-  //   component: FloorComponent,
-  // },
-  {
-    path: 'd/login',
-    component: AuthComponent,
-  },
-  {
-    path: 'd/depart',
-    component: DepartmentComponent,
-  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled',
+      anchorScrolling: 'enabled',
+      relativeLinkResolution: 'corrected',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

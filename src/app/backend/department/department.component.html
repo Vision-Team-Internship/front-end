@@ -1,74 +1,71 @@
-<div class="container">
-  Department
-  <div class="form-group mt-4">
-    <label for="exampleInputEmail1">
-      <h5>Department Name</h5>
-    </label>
-    <form [formGroup]="departmentForm" (ngSubmit)="addDepartment()">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="input-group mb-3">
-            <select
-              formControlName="floor_id"
-              class="custom-select custom-select-lg"
-              id="inputGroupSelect02"
-            >
-              <option selected>Select Floor</option>
-              <option *ngFor="let item of floors" value="{{ item._id }}">
-                {{ item.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <input
-            type="text"
-            class="form-control form-control-lg"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            formControlName="name"
-            placeholder="Department Name ..."
-          />
-        </div>
-        <div class="col-md-4">
-          <button class="btn btn-lg btn-success">Add</button>
+<div class="form-group mt-4">
+  <label for="exampleInputEmail1">
+    <h5>Department Name</h5>
+  </label>
+  <form [formGroup]="departmentForm" (ngSubmit)="addDepartment()">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <select
+            formControlName="floor_id"
+            class="custom-select custom-select-lg"
+            id="inputGroupSelect02"
+          >
+            <option value="" disabled>Select Floor</option>
+            <option *ngFor="let item of floors" value="{{ item._id }}">
+              {{ item.name }}
+            </option>
+          </select>
         </div>
       </div>
-    </form>
-  </div>
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          formControlName="name"
+          placeholder="Department Name ..."
+        />
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-lg btn-success">Add</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-  <div class="button">
-    <button
-      class="btn btn-danger"
-      (click)="displayDeleteDepartment()"
-      [disabled]="displayDeleteDepartmentBtn"
-    >
-      Delete Department
-    </button>
-    <button class="btn btn-secondary ml-3" (click)="doneBtn()">Done</button>
-  </div>
+<div class="button">
+  <button
+    class="btn btn-danger"
+    (click)="displayDeleteDepartment()"
+    [disabled]="displayDeleteDepartmentBtn"
+  >
+    Delete Department
+  </button>
+  <button class="btn btn-secondary ml-3" (click)="doneBtn()">Done</button>
+</div>
 
-  <hr />
-  <div class="list-floor">
-    <div class="row text-center">
-      <div class="col-md-3 pb-3" *ngFor="let item of departments">
-        <div class="card">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-10 b">
-                <h4>
-                  {{ item.name }}
-                </h4>
-              </div>
-              <div class="col-md-2">
-                <button
-                  class="btn btn-sm btn-dark"
-                  (click)="deleteDepartment(item._id)"
-                  *ngIf="displayDeleteDepartmentBtn"
-                >
-                  X
-                </button>
-              </div>
+<hr />
+<div class="list-floor">
+  <div class="row text-center">
+    <div class="col-md-3 pb-3" *ngFor="let item of departments">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-10 b">
+              <h4>
+                {{ item.name }}
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <button
+                class="btn btn-sm btn-dark"
+                (click)="deleteDepartment(item._id)"
+                *ngIf="displayDeleteDepartmentBtn"
+              >
+                X
+              </button>
             </div>
           </div>
         </div>
