@@ -4,7 +4,7 @@
   </label>
   <form [formGroup]="departmentForm" (ngSubmit)="addDepartment()">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="input-group mb-3">
           <select
             formControlName="floor_id"
@@ -18,7 +18,7 @@
           </select>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <input
           type="text"
           class="form-control form-control-lg"
@@ -43,7 +43,13 @@
   >
     Delete Department
   </button>
-  <button class="btn btn-secondary ml-3" (click)="doneBtn()">Done</button>
+  <button
+    class="btn btn-secondary ml-3"
+    (click)="doneBtn()"
+    *ngIf="displayDeleteDepartmentBtn"
+  >
+    Done
+  </button>
 </div>
 
 <hr />

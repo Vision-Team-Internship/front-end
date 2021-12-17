@@ -120,7 +120,7 @@ a[data-toggle="collapse"] {
   height: 25px;
 }
 
-#sidebar ul li a .ac {
+.ac {
   color: #ffa79b;
 }
 
