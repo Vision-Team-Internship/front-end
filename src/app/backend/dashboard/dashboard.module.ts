@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FloorComponent } from '../floor/floor.component';
 import { DepartmentComponent } from '../department/department.component';
 import { AuthComponent } from '../auth/auth.component';
+import { RoomComponent } from 'src/app/components/room/room.component';
+import { RoomsComponent } from '../rooms/rooms.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,10 @@ const routes: Routes = [
     path: 'department',
     pathMatch: 'full',
     component: DepartmentComponent,
+  },
+  {
+    path: 'room',
+    component: RoomsComponent,
   },
   {
     path: 'login',

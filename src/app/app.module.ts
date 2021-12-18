@@ -14,6 +14,7 @@ import { DepartmentComponent } from './backend/department/department.component';
 import { FloorEditComponent } from './backend/floor/floor-edit/floor-edit.component';
 import { FloorAddComponent } from './backend/floor/floor-add/floor-add.component';
 import { AuthComponent } from './backend/auth/auth.component';
+import { RoomsComponent } from './backend/rooms/rooms.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AuthComponent } from './backend/auth/auth.component';
     FloorEditComponent,
     FloorAddComponent,
     AuthComponent,
+    RoomsComponent,
   ],
   imports: [
     BrowserModule,

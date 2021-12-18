@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Department, Floor, Room } from 'src/model';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Department, Floor, Room, SendMessage } from 'src/model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +28,7 @@ export class Service {
     return this.http.get<Room[]>(this.roomApi);
   }
 
-  public sendMessage(data: Message): Observable<any> {
+  public sendMessage(data: SendMessage): Observable<any> {
     return this.http.post(this.messageApi, data);
   }
 

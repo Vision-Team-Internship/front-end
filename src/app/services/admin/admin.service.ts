@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Department, Floor } from 'src/model';
+import { Message, Department, Floor, Room } from 'src/model';
 
 const httpOption = {
   headers: new HttpHeaders({
@@ -17,6 +17,9 @@ interface floorResponse {
 interface departmentResponse {
   payload: Department;
 }
+interface roomResponse {
+  payload: Room;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +30,13 @@ export class AdminService {
   private floorApi = 'https://feedback-project-api.herokuapp.com/api/v1/floors';
   private departmentApi =
     'https://feedback-project-api.herokuapp.com/api/v1/departments';
+  private roomApi = '//feedback-project-api.herokuapp.com/api/v1/rooms';
+  private messageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
 
+  getMessage() {
+    return this, this.http.get<Message[]>(this.messageApiUrl, httpOption);
+  }
   login(email: string, password: string) {
     return this.http.post<any>(this.loginApi, { email, password });
   }
@@ -58,5 +67,15 @@ export class AdminService {
 
   deleteDepartment(id: any): Observable<any> {
     return this.http.delete(`${this.departmentApi}/${id}`, httpOption);
+  }
+  getRoom() {
+    return this.http.get<Room[]>(this.roomApi);
+  }
+  createRoom(data: any): Observable<roomResponse> {
+    return this.http.post<roomResponse>(this.roomApi, data, httpOption);
+  }
+
+  deleteRoom(id: any): Observable<any> {
+    return this.http.delete(`${this.roomApi}/${id}`, httpOption);
   }
 }

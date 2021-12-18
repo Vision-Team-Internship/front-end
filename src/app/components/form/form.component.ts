@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Service } from 'src/app/services/service.service';
-import { Department, Floor, Room } from 'src/model';
+import { Department, Floor, Room, SendMessage } from 'src/model';
 
 @Component({
   selector: 'app-form',
@@ -82,7 +82,7 @@ export class FormComponent implements OnInit {
       }
     }
 
-    const data: any = {
+    const data: SendMessage = {
       title: this.submitForm.controls['title'].value,
       message: this.submitForm.controls['message'].value,
       feedbackLevel: this.submitForm.controls['feedbackLevel'].value,

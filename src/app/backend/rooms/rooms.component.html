@@ -1,0 +1,106 @@
+<button class="btn btn-dark" (click)="showFloor()" *ngIf="!displayFloor">
+  Show floor
+</button>
+<button class="btn btn-dark" (click)="hideFloor()" *ngIf="displayFloor">
+  Hide floor
+</button>
+
+<form [formGroup]="roomForm" (ngSubmit)="addRoom()">
+  <div class="row">
+    <div class="col-md-3" *ngIf="displayFloor">
+      <div class="input-group mb-3">
+        <select
+          #selectList
+          class="custom-select custom-select-lg"
+          id="inputGroupSelect02"
+          (change)="getFloorId(selectList.value)"
+        >
+          <option selected>Select Floor</option>
+          <option *ngFor="let item of floors" value="{{ item._id }}">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="input-group mb-3" *ngIf="FloorID">
+        <select
+          formControlName="department_id"
+          class="custom-select custom-select-lg"
+          id="inputGroupSelect02"
+        >
+          <option value="" disabled>Select Department</option>
+          <ng-container *ngFor="let item of departments">
+            <option *ngIf="item.floor_id == FloorID" value="{{ item._id }}">
+              {{ item.name }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="input-group mb-3" *ngIf="!FloorID">
+        <select
+          formControlName="department_id"
+          class="custom-select custom-select-lg"
+          id="inputGroupSelect02"
+        >
+          <option value="" disabled>Select Department</option>
+          <option *ngFor="let item of departments" value="{{ item._id }}">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="name"
+        placeholder="Room Number"
+      />
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-lg btn-success">Add</button>
+    </div>
+  </div>
+</form>
+
+<button class="btn btn-danger" (click)="displayDeleteRoom()">
+  Delete Room
+</button>
+<button
+  class="btn btn-secondary ml-3"
+  (click)="done()"
+  *ngIf="displayDeleteBtn"
+>
+  Done
+</button>
+<hr />
+<div class="list-floor">
+  <div class="row text-center">
+    <div class="col-md-3 pb-3" *ngFor="let item of rooms">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-10 b">
+              <h4>
+                {{ item.name }}
+              </h4>
+            </div>
+            <div class="col-md-2">
+              <button
+                class="btn btn-sm btn-dark"
+                (click)="deteleRoom(item._id)"
+                *ngIf="displayDeleteBtn"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

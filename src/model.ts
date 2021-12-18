@@ -7,18 +7,20 @@ export interface Department {
   _id?: number;
   name: string;
   floor_id: string;
+  manager_id: string;
 }
 export interface Room {
   _id?: number;
   name: string;
   department_id: string;
+  manager_id: string;
 }
-export interface Message {
+export interface SendMessage {
   title: string;
   message: string;
   feedbackLevel: string;
   feedbackType: string;
-  uniqueIDs: string;
+  uniqueIDs: string[];
 }
 
 export interface MSG {
@@ -29,4 +31,29 @@ export interface MSG {
   room_id: string;
   department_id: string;
   floor_id: string;
+}
+
+export interface Message {
+  title: string;
+  message: string;
+  feedbackLevel: string;
+  feedbackType: string;
+  uniqueIDs: string;
+  createdDate: string;
+  isArchived: boolean;
+  isApproved: boolean;
+  isRejected: boolean;
+  isCompleted: boolean;
+  feedbackLocation: [Floor, Department, Room];
+  managerContact: [
+    { location: string },
+    { cardID: string },
+    { username: string },
+    { phone_number: string }
+  ];
+  approvedDate: string;
+  completedDate: string;
+  rejectedDate: string;
+  archivedDate: string;
+  url: string;
 }
