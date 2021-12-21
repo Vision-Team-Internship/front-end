@@ -78,4 +78,8 @@ export class AdminService {
   deleteRoom(id: any): Observable<any> {
     return this.http.delete(`${this.roomApi}/${id}`, httpOption);
   }
+
+  deleteMessage(id: string): Observable<any> {
+    return this.http.delete(`${this.messageApiUrl}/${id}`, httpOption);
+  }
 }

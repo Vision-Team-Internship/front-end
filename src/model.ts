@@ -34,6 +34,7 @@ export interface MSG {
 }
 
 export interface Message {
+  _id: string;
   title: string;
   message: string;
   feedbackLevel: string;

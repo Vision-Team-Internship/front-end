@@ -6,6 +6,7 @@ import { DepartmentComponent } from '../department/department.component';
 import { AuthComponent } from '../auth/auth.component';
 import { RoomComponent } from 'src/app/components/room/room.component';
 import { RoomsComponent } from '../rooms/rooms.component';
+import { MessageComponent } from '../message/message.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: AuthComponent,
+  },
+  {
+    path: 'msg',
+    component: MessageComponent,
   },
 ];
 

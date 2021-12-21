@@ -15,6 +15,7 @@ import { FloorEditComponent } from './backend/floor/floor-edit/floor-edit.compon
 import { FloorAddComponent } from './backend/floor/floor-add/floor-add.component';
 import { AuthComponent } from './backend/auth/auth.component';
 import { RoomsComponent } from './backend/rooms/rooms.component';
+import { MessageComponent } from './backend/message/message.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RoomsComponent } from './backend/rooms/rooms.component';
     FloorAddComponent,
     AuthComponent,
     RoomsComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
