@@ -11,6 +11,7 @@ export class MessageComponent implements OnInit {
   messages: Message[] = [];
   highMessages: Message[] = [];
   normalMessages: Message[] = [];
+  location: string[] = [];
   displayActionBtn = false;
   messageID: string = '';
   highFeedback = true;
@@ -26,8 +27,8 @@ export class MessageComponent implements OnInit {
       console.log(data.payload);
       this.highMessages = data.payload;
     });
-    this.messageService.getNormalMessage().subscribe((data: any) => {
-      console.log(data.payload);
+    this.messageService.getLormalMessage().subscribe((data: any) => {
+      console.log('low', data.payload);
       this.normalMessages = data.payload;
     });
   }
@@ -35,20 +36,25 @@ export class MessageComponent implements OnInit {
     console.log('ok');
   }
   showAction(id: string) {
-    console.log(id);
     this.messageID = id;
   }
   hideAction(id: string) {
-    console.log(id);
     this.messageID = '';
   }
 
   deleteMessage(id: string) {
     this.messageService.deleteMessage(id).subscribe((res) => {
       console.log(res);
-      this.highMessages = this.highMessages.filter(
-        (messages) => messages._id != id
-      );
+      if (this.highFeedback) {
+        this.highMessages = this.highMessages.filter(
+          (messages) => messages._id != id
+        );
+      }
+      if (this.normalMessages) {
+        this.normalMessages = this.normalMessages.filter(
+          (messages) => messages._id != id
+        );
+      }
     });
   }
   showNormal() {

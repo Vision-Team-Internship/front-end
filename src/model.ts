@@ -45,7 +45,11 @@ export interface Message {
   isApproved: boolean;
   isRejected: boolean;
   isCompleted: boolean;
-  feedbackLocation: [Floor, Department, Room];
+  feedbackLocation: [
+    { department: string[] },
+    { floor: string[] },
+    { room: string[] }
+  ];
   managerContact: [
     { location: string },
     { cardID: string },

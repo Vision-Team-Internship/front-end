@@ -38,6 +38,8 @@ export class AdminService {
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=High';
   private NormalMessageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=Medium';
+  private lowMessageapiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=Low';
   getMessage() {
     return this, this.http.get<Message[]>(this.messageApiUrl, httpOption);
   }
@@ -46,6 +48,9 @@ export class AdminService {
   }
   getNormalMessage() {
     return this, this.http.get<Message[]>(this.NormalMessageApiUrl, httpOption);
+  }
+  getLormalMessage() {
+    return this, this.http.get<Message[]>(this.lowMessageapiUrl, httpOption);
   }
   login(email: string, password: string) {
     return this.http.post<any>(this.loginApi, { email, password });
