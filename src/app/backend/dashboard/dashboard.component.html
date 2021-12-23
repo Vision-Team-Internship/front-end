@@ -9,13 +9,12 @@
         </div> -->
         <ul class="mb-5 list-unstyled">
           <li>
-            <a routerLinkActive="card cs-shadow border-0">
+            <a routerLink="/d" routerLinkActive="card cs-shadow border-0">
               <div>
-                <span class="pl-3">Dashboard</span>
+                <span class="pl-3" routerLinkActive="ac">Message</span>
               </div>
             </a>
           </li>
-
           <li>
             <a routerLink="/d/floor" routerLinkActive="card cs-shadow border-0">
               <div>
@@ -39,23 +38,11 @@
               </div>
             </a>
           </li>
-          <li>
-            <a routerLink="/d/msg" routerLinkActive="card cs-shadow border-0">
-              <div>
-                <span class="pl-3" routerLinkActive="ac">Message</span>
-              </div>
-            </a>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
   <div id="content">
-    <ul class="nav justify-content-end p-1 pr-4 sticky-top">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
-    </ul>
     <div class="ml-4 mr-4 mt-4">
       <router-outlet></router-outlet>
     </div>

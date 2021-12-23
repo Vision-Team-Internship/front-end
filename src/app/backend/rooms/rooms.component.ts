@@ -81,6 +81,7 @@ export class RoomsComponent implements OnInit {
     this.displayFloor = true;
   }
   hideFloor() {
+    this.FloorID = '';
     this.displayFloor = false;
   }
 

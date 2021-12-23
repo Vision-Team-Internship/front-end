@@ -20,14 +20,17 @@ const routes: Routes = [
   },
   {
     path: 'room',
+    pathMatch: 'full',
     component: RoomsComponent,
   },
   {
     path: 'login',
+    pathMatch: 'full',
     component: AuthComponent,
   },
   {
-    path: 'msg',
+    path: '',
+    pathMatch: 'full',
     component: MessageComponent,
   },
 ];

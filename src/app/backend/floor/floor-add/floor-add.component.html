@@ -5,17 +5,11 @@
   <form [formGroup]="floorForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-3">
-        <input
-          type="text"
-          class="form-control form-control-lg"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          formControlName="name"
-          placeholder="Floor ..."
-        />
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="name" placeholder="Floor ..." />
       </div>
       <div class="col-md-4">
-        <button class="btn btn-lg btn-success">Add</button>
+        <button class="btn btn-success">Add</button>
       </div>
     </div>
   </form>
