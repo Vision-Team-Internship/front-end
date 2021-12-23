@@ -9,8 +9,12 @@ import { Message } from 'src/model';
 })
 export class MessageComponent implements OnInit {
   messages: Message[] = [];
+  highMessages: Message[] = [];
+  normalMessages: Message[] = [];
   displayActionBtn = false;
   messageID: string = '';
+  highFeedback = true;
+  normalFeedback = false;
   constructor(private messageService: AdminService) {}
 
   ngOnInit(): void {
@@ -18,21 +22,41 @@ export class MessageComponent implements OnInit {
       console.log(data.payload);
       this.messages = data.payload;
     });
+    this.messageService.getHighMessage().subscribe((data: any) => {
+      console.log(data.payload);
+      this.highMessages = data.payload;
+    });
+    this.messageService.getNormalMessage().subscribe((data: any) => {
+      console.log(data.payload);
+      this.normalMessages = data.payload;
+    });
   }
   ok() {
     console.log('ok');
   }
   showAction(id: string) {
+    console.log(id);
     this.messageID = id;
   }
   hideAction(id: string) {
+    console.log(id);
     this.messageID = '';
   }
 
   deleteMessage(id: string) {
     this.messageService.deleteMessage(id).subscribe((res) => {
       console.log(res);
-      this.messages = this.messages.filter((messages) => messages._id != id);
+      this.highMessages = this.highMessages.filter(
+        (messages) => messages._id != id
+      );
     });
+  }
+  showNormal() {
+    this.normalFeedback = true;
+    this.highFeedback = false;
+  }
+  showHigh() {
+    this.highFeedback = true;
+    this.normalFeedback = false;
   }
 }

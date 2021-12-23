@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { FloorComponent } from '../floor/floor.component';
 import { DepartmentComponent } from '../department/department.component';
 import { AuthComponent } from '../auth/auth.component';
-import { RoomComponent } from 'src/app/components/room/room.component';
 import { RoomsComponent } from '../rooms/rooms.component';
 import { MessageComponent } from '../message/message.component';
 

@@ -34,8 +34,18 @@ export class AdminService {
   private messageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
 
+  private highMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=High';
+  private NormalMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=Medium';
   getMessage() {
     return this, this.http.get<Message[]>(this.messageApiUrl, httpOption);
+  }
+  getHighMessage() {
+    return this, this.http.get<Message[]>(this.highMessageApiUrl, httpOption);
+  }
+  getNormalMessage() {
+    return this, this.http.get<Message[]>(this.NormalMessageApiUrl, httpOption);
   }
   login(email: string, password: string) {
     return this.http.post<any>(this.loginApi, { email, password });
