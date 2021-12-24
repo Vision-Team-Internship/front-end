@@ -10,7 +10,7 @@
 <form [formGroup]="roomForm" (ngSubmit)="addRoom()">
   <div class="row">
     <div class="col-md-3" *ngIf="displayFloor">
-      <div class="input-group mb-3">
+      <div class="input-group mb-3 shadow-sm rounded">
         <select #selectList class="custom-select" id="inputGroupSelect02" (change)="getFloorId(selectList.value)">
           <option selected>Select Floor</option>
           <option *ngFor="let item of floors" value="{{ item._id }}">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-md-3">
-      <div class="input-group mb-3" *ngIf="FloorID">
+      <div class="input-group mb-3 shadow-sm rounded" *ngIf="FloorID">
         <select formControlName="department_id" class="custom-select" id="inputGroupSelect02">
           <option value="" disabled>Select Department</option>
           <ng-container *ngFor="let item of departments">
@@ -31,7 +31,7 @@
           </ng-container>
         </select>
       </div>
-      <div class="input-group mb-3" *ngIf="!FloorID">
+      <div class="input-group mb-3 shadow-sm rounded" *ngIf="!FloorID">
         <select formControlName="department_id" class="custom-select" id="inputGroupSelect02">
           <option value="" disabled>Select Department</option>
           <option *ngFor="let item of departments" value="{{ item._id }}">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+      <input type="text" class="form-control shadow-sm rounded" id="exampleInputEmail1" aria-describedby="emailHelp"
         formControlName="name" placeholder="Room Number" />
     </div>
     <div class="col-md-3">
@@ -80,16 +80,16 @@
 <div class="list-floor">
   <div class="row text-center">
     <div class="col-md-3 pb-3" *ngFor="let item of rooms">
-      <div class="card">
+      <div class="card border-0 cs-shadow rounded">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-10 b">
+            <div class="b" [ngClass]="displayDeleteBtn ? 'col-md-10' : 'col-md-12'">
               <h4>
-                {{ item.name }}
+                Room {{ item.name }}
               </h4>
             </div>
-            <div class="col-md-2">
-              <div class="btn delete-btn" (click)="deteleRoom(item._id)" *ngIf="displayDeleteBtn">
+            <div class="col-md-2" *ngIf="displayDeleteBtn">
+              <div class="btn delete-btn" (click)="deteleRoom(item._id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                   class="bi bi-trash-fill" viewBox="0 0 16 16">
                   <path

@@ -24,11 +24,6 @@ const routes: Routes = [
     component: RoomsComponent,
   },
   {
-    path: 'login',
-    pathMatch: 'full',
-    component: AuthComponent,
-  },
-  {
     path: '',
     pathMatch: 'full',
     component: MessageComponent,

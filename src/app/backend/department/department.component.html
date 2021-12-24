@@ -5,7 +5,7 @@
   <form [formGroup]="departmentForm" (ngSubmit)="addDepartment()">
     <div class="row">
       <div class="col-md-3">
-        <div class="input-group">
+        <div class="input-group shadow-sm rounded">
           <select formControlName="floor_id" class="custom-select" id="inputGroupSelect02">
             <option value="" disabled>Select Floor</option>
             <option *ngFor="let item of floors" value="{{ item._id }}">
@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="col-md-4">
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          formControlName="name" placeholder="Department Name ..." />
+        <input type="text" class="form-control shadow-sm rounded" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="name" placeholder="Department Name" />
       </div>
       <div class="col-md-4">
         <button class="btn btn-success">Add</button>
@@ -55,16 +55,16 @@
 <div class="list-floor">
   <div class="row text-center">
     <div class="col-md-3 pb-3" *ngFor="let item of departments">
-      <div class="card">
+      <div class="card border-0 cs-shadow rounded">
         <div class="card-body">
           <div class="row">
-            <div class="col-md-10 b">
+            <div class="b" [ngClass]="displayDeleteDepartmentBtn ? 'col-md-10' : 'col-md-12'">
               <h4>
                 {{ item.name }}
               </h4>
             </div>
-            <div class="col-md-2">
-              <div class="btn delete-btn" (click)="deleteDepartment(item._id)" *ngIf="displayDeleteDepartmentBtn">
+            <div class="col-md-2" *ngIf="displayDeleteDepartmentBtn">
+              <div class="btn delete-btn" (click)="deleteDepartment(item._id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                   class="bi bi-trash-fill" viewBox="0 0 16 16">
                   <path

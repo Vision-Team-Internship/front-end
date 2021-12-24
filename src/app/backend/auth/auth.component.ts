@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
       (data) => {
         console.log(data.token);
         localStorage.setItem('token', data.token);
-        this.router.navigate(['/d/floor']);
+        this.router.navigate(['/d']);
       },
       (err) => {
         alert(err);

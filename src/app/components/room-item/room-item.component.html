@@ -4,34 +4,24 @@
     <div *ngIf="!submitted">
       <div class="card border-0 cs-shadow rounded feedback">
         <div class="card-body">
-          <div class="header pb-3">
+          <div class="header">
             <h3 style="color: #0080ff">Feedback For {{ roomData.name }}</h3>
             <p>
               Please fill out this brief feedback form so we can ensure a tap
               qualify experience for all of our visitors.
             </p>
           </div>
+          <hr>
           <form [formGroup]="submitForm" (submit)="sendMessage()">
-            <input
-              type="hidden"
-              [ngModel]="roomID"
-              name="room_id"
-              formControlName="room_id"
-              value="{{ roomID }}"
-            />
+            <input type="hidden" [ngModel]="roomID" name="room_id" formControlName="room_id" value="{{ roomID }}" />
             <div class="title pt-3 pb-3">
               <h5 class="pb-2">
                 <span>*</span>
                 Title
               </h5>
               <div class="pb-3">
-                <input
-                  formControlName="title"
-                  type="text"
-                  class="form-control form-control-lg shadow-sm"
-                  placeholder="Title"
-                  name="title"
-                />
+                <input formControlName="title" type="text" class="form-control form-control-lg shadow-sm"
+                  placeholder="Title" name="title" />
               </div>
             </div>
             <div class="feedback pt-3 pb-3">
@@ -40,14 +30,8 @@
                 Feedback Message
               </h5>
               <div class="pb-3">
-                <textarea
-                  formControlName="message"
-                  name="message"
-                  id=""
-                  rows="5"
-                  class="form-control form-control-lg"
-                  placeholder="Message"
-                ></textarea>
+                <textarea formControlName="message" name="message" id="" rows="5" class="form-control form-control-lg"
+                  placeholder="Message"></textarea>
               </div>
               <p class="text-muted">
                 Please feel free to send us your feedback or request about our
@@ -62,41 +46,16 @@
               <div class="row">
                 <div class="col-md-4 pb-3">
                   <div class="form-check form-check-inline">
-                    <input
-                      formControlName="feedbackLevel"
-                      class="form-check-input"
-                      type="radio"
-                      name="feedbackLevel"
-                      id="High"
-                      value="High"
-                    />
+                    <input formControlName="feedbackLevel" class="form-check-input" type="radio" name="feedbackLevel"
+                      id="High" value="High" />
                     <label class="form-check-label" for="High"> High </label>
                   </div>
                 </div>
                 <div class="col-md-4 pb-3">
                   <div class="form-check form-check-inline">
-                    <input
-                      formControlName="feedbackLevel"
-                      class="form-check-input"
-                      type="radio"
-                      name="feedbackLevel"
-                      id="Normal"
-                      value="Medium"
-                    />
+                    <input formControlName="feedbackLevel" class="form-check-input" type="radio" name="feedbackLevel"
+                      id="Normal" value="Medium" />
                     <label class="form-check-label" for="Normal">Normal </label>
-                  </div>
-                </div>
-                <div class="col-md-4 pb-3">
-                  <div class="form-check form-check-inline">
-                    <input
-                      formControlName="feedbackLevel"
-                      class="form-check-input"
-                      type="radio"
-                      name="feedbackLevel"
-                      id="Low"
-                      value="Low"
-                    />
-                    <label class="form-check-label" for="Low"> Low</label>
                   </div>
                 </div>
               </div>

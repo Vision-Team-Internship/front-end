@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Message, Department, Floor, Room } from 'src/model';
 
@@ -24,7 +25,7 @@ interface roomResponse {
   providedIn: 'root',
 })
 export class AdminService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private loginApi = 'https://feedback-project-api.herokuapp.com/login';
   private floorApi = 'https://feedback-project-api.herokuapp.com/api/v1/floors';
@@ -55,7 +56,13 @@ export class AdminService {
   login(email: string, password: string) {
     return this.http.post<any>(this.loginApi, { email, password });
   }
-
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+  }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
   getfloor() {
     return this.http.get<Floor[]>(this.floorApi);
   }

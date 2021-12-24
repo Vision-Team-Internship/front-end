@@ -7,6 +7,7 @@ import { RoomComponent } from './components/room/room.component';
 import { AuthComponent } from './backend/auth/auth.component';
 import { DashboardComponent } from './backend/dashboard/dashboard.component';
 import { DepartmentComponent } from './backend/department/department.component';
+import { AuthGuard } from './backend/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'd',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./backend/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -28,6 +30,11 @@ const routes: Routes = [
   {
     path: 'room',
     component: RoomComponent,
+  },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    component: AuthComponent,
   },
 ];
 

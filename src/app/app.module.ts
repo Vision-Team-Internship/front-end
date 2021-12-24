@@ -16,6 +16,7 @@ import { FloorAddComponent } from './backend/floor/floor-add/floor-add.component
 import { AuthComponent } from './backend/auth/auth.component';
 import { RoomsComponent } from './backend/rooms/rooms.component';
 import { MessageComponent } from './backend/message/message.component';
+import { AuthGuard } from './backend/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { MessageComponent } from './backend/message/message.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
