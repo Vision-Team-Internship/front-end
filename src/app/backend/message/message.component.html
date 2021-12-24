@@ -1,88 +1,3 @@
-<style>
-  a {
-    text-decoration: none;
-  }
-
-  div.b {
-    white-space: nowrap;
-    max-width: 1100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  div.a {
-    white-space: nowrap;
-    max-width: 800px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .icon {
-    cursor: pointer;
-  }
-
-  .icon-blue :hover {
-    color: rgb(48, 48, 235);
-  }
-
-  .icon-red :hover {
-    color: rgb(194, 9, 9);
-  }
-
-  .icon-green :hover {
-    color: rgb(48, 156, 26);
-  }
-
-  .nav-msg .primary {
-    cursor: pointer;
-    color: #d93025;
-  }
-
-  .nav-msg .primary .cs-border {
-    border-bottom: 3px solid #d93025;
-  }
-
-  .nav-msg .primary .card-bg:hover {
-    background-color: rgb(221, 221, 221);
-  }
-
-  .nav-msg .normal {
-    cursor: pointer;
-    color: #1a73e8;
-  }
-
-  .nav-msg .normal .cs-border {
-    border-bottom: 3px solid #1a73e8;
-  }
-
-  .nav-msg .normal .card-bg:hover {
-    background-color: rgb(221, 221, 221);
-  }
-
-  .msg-item .card {
-    border-radius: 0;
-  }
-
-  .msg-item strong {
-    text-transform: capitalize;
-  }
-
-  .msg-item .des {
-    text-transform: capitalize;
-  }
-
-  .msg-item strong {
-    font-weight: 500;
-  }
-
-  .msg-item .card:hover {
-    -moz-box-shadow: 0 0 3px rgb(139, 139, 139);
-    -webkit-box-shadow: 0 0 3px rgb(139, 139, 139);
-    box-shadow: 0 0 3px rgb(139, 139, 139);
-    z-index: 2;
-  }
-</style>
-
 <div class="pl-3 pr-3 pb-3">
   <div class="row">
     <div class="col-md-1">
@@ -162,7 +77,11 @@
                 <input type="checkbox" class="custom-control-input" id="{{ item._id }}" />
                 <label class="custom-control-label pl-2" for="{{ item._id }}">
                   <strong>
-                    {{ item.feedbackLocation }}
+                    <span *ngFor="let floor of item.feedbackLocation.floor; let key = index;">{{floor}}
+                      <span *ngIf="key != item.feedbackLocation.floor.length - 1">
+                        ,
+                      </span>
+                    </span>
                   </strong>
                 </label>
               </div>
@@ -173,11 +92,6 @@
                 -
                 <span class="des">
                   {{ item.message }}
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Inventore, aperiam. Dolorum ducimus, dignissimos explicabo
-                  excepturi quod sunt deserunt voluptatem. Numquam unde
-                  accusamus libero commodi quidem tenetur provident dicta atque
-                  esse?
                 </span>
               </div>
             </div>
@@ -232,7 +146,11 @@
                 <input type="checkbox" class="custom-control-input" id="{{ item._id }}" />
                 <label class="custom-control-label pl-2" for="{{ item._id }}">
                   <strong>
-                    {{ item.feedbackLocation }}
+                    <span *ngFor="let floor of item.feedbackLocation.floor; let key = index;">{{floor}}
+                      <span *ngIf="key != item.feedbackLocation.floor.length - 1">
+                        ,
+                      </span>
+                    </span>
                   </strong>
                 </label>
               </div>
@@ -243,11 +161,6 @@
                 -
                 <span class="des">
                   {{ item.message }}
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Inventore, aperiam. Dolorum ducimus, dignissimos explicabo
-                  excepturi quod sunt deserunt voluptatem. Numquam unde
-                  accusamus libero commodi quidem tenetur provident dicta atque
-                  esse?
                 </span>
               </div>
             </div>

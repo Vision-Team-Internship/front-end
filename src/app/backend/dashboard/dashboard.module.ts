@@ -6,6 +6,7 @@ import { DepartmentComponent } from '../department/department.component';
 import { AuthComponent } from '../auth/auth.component';
 import { RoomsComponent } from '../rooms/rooms.component';
 import { MessageComponent } from '../message/message.component';
+import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
   {
@@ -24,9 +25,14 @@ const routes: Routes = [
     component: RoomsComponent,
   },
   {
-    path: '',
+    path: 'msg',
     pathMatch: 'full',
     component: MessageComponent,
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: DashboardComponent,
   },
 ];
 
