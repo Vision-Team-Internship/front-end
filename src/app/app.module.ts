@@ -19,6 +19,7 @@ import { MessageComponent } from './backend/message/message.component';
 import { AuthGuard } from './backend/auth/auth.guard';
 import { AllFeedbackComponent } from './backend/all-feedback/all-feedback.component';
 import { ProcessComponent } from './backend/process/process.component';
+import { CompletedMessageComponent } from './backend/completed-message/completed-message.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProcessComponent } from './backend/process/process.component';
     MessageComponent,
     AllFeedbackComponent,
     ProcessComponent,
+    CompletedMessageComponent,
   ],
   imports: [
     BrowserModule,

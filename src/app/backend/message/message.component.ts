@@ -70,6 +70,7 @@ export class MessageComponent implements OnInit {
     this.f._id.setValue(data._id);
 
     const msg: any = {
+      approvedDate: Date.now(),
       isApproved: this.f.isApproved.value,
       cloudinary_id: this.f.cloudinary_id.value,
       createdDate: this.f.createdDate.value,
@@ -85,8 +86,6 @@ export class MessageComponent implements OnInit {
       uniqueIDs: this.f.uniqueIDs.value,
       url: this.f.url.value,
       __v: this.f.__v.value,
-      feedback_id: this.f._id.value,
-      note: 'ok',
     };
     this.messageService.approvedMessage(data._id, msg).subscribe((res) => {
       if (this.highFeedback) {

@@ -21,7 +21,7 @@ interface departmentResponse {
 interface roomResponse {
   payload: Room;
 }
-interface approvedResponse {
+interface MessageResponse {
   payload: Message;
 }
 @Injectable({
@@ -49,8 +49,25 @@ export class AdminService {
   private approvedMessageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
 
-  approvedMessage(id: string, data: Message): Observable<approvedResponse> {
-    return this.http.put<approvedResponse>(
+  private incompletedMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=true&isCompleted=true';
+
+  private completedMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
+
+  getCompletedMessage() {
+    return this.http.get<Message[]>(this.incompletedMessageApiUrl, httpOption);
+  }
+
+  completeMessage(id: string, data: Message): Observable<MessageResponse> {
+    return this.http.put<MessageResponse>(
+      `${this.completedMessageApiUrl}/${id}`,
+      data,
+      httpOption
+    );
+  }
+  approvedMessage(id: string, data: Message): Observable<MessageResponse> {
+    return this.http.put<MessageResponse>(
       `${this.approvedMessageApiUrl}/${id}`,
       data,
       httpOption

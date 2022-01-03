@@ -125,7 +125,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-1" *ngIf="messageID != item._id">12 Dec</div>
+            <div class="col-md-1" *ngIf="messageID != item._id">
+              {{item.createdDate | date}}
+            </div>
           </div>
         </div>
       </div>
@@ -193,7 +195,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-1" *ngIf="messageID != item._id">12 Dec</div>
+            <div class="col-md-1" *ngIf="messageID != item._id">
+              {{item.createdDate | date}}
+            </div>
           </div>
         </div>
       </div>

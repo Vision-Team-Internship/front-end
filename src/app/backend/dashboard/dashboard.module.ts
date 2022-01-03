@@ -9,6 +9,7 @@ import { MessageComponent } from '../message/message.component';
 import { DashboardComponent } from './dashboard.component';
 import { AllFeedbackComponent } from '../all-feedback/all-feedback.component';
 import { ProcessComponent } from '../process/process.component';
+import { CompletedMessageComponent } from '../completed-message/completed-message.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,11 @@ const routes: Routes = [
     path: 'msg-process',
     pathMatch: 'full',
     component: ProcessComponent,
+  },
+  {
+    path: 'msg-completed',
+    pathMatch: 'full',
+    component: CompletedMessageComponent,
   },
   {
     path: '',
