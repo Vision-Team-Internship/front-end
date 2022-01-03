@@ -38,7 +38,7 @@ export class MessageComponent implements OnInit {
   showAction(id: string) {
     this.messageID = id;
   }
-  hideAction(id: string) {
+  hideAction() {
     this.messageID = '';
   }
 

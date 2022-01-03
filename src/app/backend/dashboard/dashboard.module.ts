@@ -7,6 +7,7 @@ import { AuthComponent } from '../auth/auth.component';
 import { RoomsComponent } from '../rooms/rooms.component';
 import { MessageComponent } from '../message/message.component';
 import { DashboardComponent } from './dashboard.component';
+import { AllFeedbackComponent } from '../all-feedback/all-feedback.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: 'msg',
     pathMatch: 'full',
     component: MessageComponent,
+  },
+  {
+    path: 'all-msg',
+    pathMatch: 'full',
+    component: AllFeedbackComponent,
   },
   {
     path: '',

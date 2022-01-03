@@ -17,6 +17,7 @@ import { AuthComponent } from './backend/auth/auth.component';
 import { RoomsComponent } from './backend/rooms/rooms.component';
 import { MessageComponent } from './backend/message/message.component';
 import { AuthGuard } from './backend/auth/auth.guard';
+import { AllFeedbackComponent } from './backend/all-feedback/all-feedback.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthGuard } from './backend/auth/auth.guard';
     AuthComponent,
     RoomsComponent,
     MessageComponent,
+    AllFeedbackComponent,
   ],
   imports: [
     BrowserModule,
