@@ -21,6 +21,9 @@ interface departmentResponse {
 interface roomResponse {
   payload: Room;
 }
+interface approvedResponse {
+  payload: Message;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -36,34 +39,53 @@ export class AdminService {
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
 
   private highMessageApiUrl =
-    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=High';
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=false&isRejected=false&feedbackLevel=High';
   private NormalMessageApiUrl =
-    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=Medium';
-  private lowMessageapiUrl =
-    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?feedbackLevel=Low';
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=false&isRejected=false&feedbackLevel=Medium';
+
+  private inProcessMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=true&isCompleted=false';
+
+  private approvedMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
+
+  approvedMessage(id: string, data: Message): Observable<approvedResponse> {
+    return this.http.put<approvedResponse>(
+      `${this.approvedMessageApiUrl}/${id}`,
+      data,
+      httpOption
+    );
+  }
+
+  getInProccessMessage() {
+    return this.http.get<Message[]>(this.inProcessMessageApiUrl, httpOption);
+  }
 
   getMessage() {
-    return this, this.http.get<Message[]>(this.messageApiUrl, httpOption);
+    return this.http.get<Message[]>(this.messageApiUrl, httpOption);
   }
+
   getHighMessage() {
-    return this, this.http.get<Message[]>(this.highMessageApiUrl, httpOption);
+    return this.http.get<Message[]>(this.highMessageApiUrl, httpOption);
   }
+
   getNormalMessage() {
-    return this, this.http.get<Message[]>(this.NormalMessageApiUrl, httpOption);
+    return this.http.get<Message[]>(this.NormalMessageApiUrl, httpOption);
   }
-  getLormalMessage() {
-    return this, this.http.get<Message[]>(this.lowMessageapiUrl, httpOption);
-  }
+
   login(email: string, password: string) {
     return this.http.post<any>(this.loginApi, { email, password });
   }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
+
   loggedIn() {
     return !!localStorage.getItem('token');
   }
+
   getfloor() {
     return this.http.get<Floor[]>(this.floorApi);
   }
@@ -91,9 +113,11 @@ export class AdminService {
   deleteDepartment(id: any): Observable<any> {
     return this.http.delete(`${this.departmentApi}/${id}`, httpOption);
   }
+
   getRoom() {
     return this.http.get<Room[]>(this.roomApi);
   }
+
   createRoom(data: any): Observable<roomResponse> {
     return this.http.post<roomResponse>(this.roomApi, data, httpOption);
   }

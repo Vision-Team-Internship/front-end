@@ -181,3 +181,96 @@ a[data-toggle="collapse"] {
     font-size: 16px;
   }
 }
+a {
+  text-decoration: none;
+}
+
+div.b {
+  white-space: nowrap;
+  max-width: 1100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.a {
+  white-space: nowrap;
+  max-width: 800px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon-blue :hover {
+  color: rgb(48, 48, 235);
+}
+
+.icon-red :hover {
+  color: rgb(194, 9, 9);
+}
+
+.icon-green :hover {
+  color: rgb(48, 156, 26);
+}
+
+.nav-msg .primary {
+  cursor: pointer;
+  color: #d93025;
+}
+
+.nav-msg .primary .cs-border {
+  border-bottom: 3px solid #d93025;
+}
+
+.nav-msg .primary .card-bg:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+.nav-msg .normal {
+  cursor: pointer;
+  color: #1a73e8;
+}
+
+.nav-msg .normal .cs-border {
+  border-bottom: 3px solid #1a73e8;
+}
+
+.nav-msg .normal .card-bg:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+.msg-item .card {
+  border-radius: 0;
+}
+
+.msg-item strong {
+  text-transform: capitalize;
+}
+
+.msg-item .des {
+  text-transform: capitalize;
+}
+
+.msg-item strong {
+  font-weight: 500;
+}
+
+.msg-item .card:hover {
+  -moz-box-shadow: 0 0 3px rgb(139, 139, 139);
+  -webkit-box-shadow: 0 0 3px rgb(139, 139, 139);
+  box-shadow: 0 0 3px rgb(139, 139, 139);
+  z-index: 2;
+}
+
+.red-border {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  border-left: 5px solid #d93025;
+}
+.blue-border {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  border-left: 5px solid #1a73e8;
+}

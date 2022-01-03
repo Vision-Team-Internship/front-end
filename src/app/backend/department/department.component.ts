@@ -43,7 +43,7 @@ export class DepartmentComponent implements OnInit {
   }
 
   addDepartment() {
-    const data: any = {
+    const data: Department = {
       name: this.f.name.value,
       floor_id: this.f.floor_id.value,
       manager_id: this.f.manager_id.value,
