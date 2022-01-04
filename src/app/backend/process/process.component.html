@@ -48,7 +48,7 @@
               </label>
             </div>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-8">
             <div class="b">
               <strong>{{ item.title }}</strong>
               -
@@ -57,8 +57,8 @@
               </span>
             </div>
           </div>
-          <div class="col-md-1" *ngIf="messageID == item._id">
-            <div class="row text-center">
+          <div class="col-md-2" *ngIf="messageID == item._id">
+            <div class="row justify-content-end pr-3">
               <div class="col-md-2">
                 <div class="icon icon-red" (click)="deleteMessage(item._id)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-1" *ngIf="messageID != item._id">
+          <div class="col-md-2 text-right" *ngIf="messageID != item._id">
             {{item.approvedDate | date}}
           </div>
         </div>

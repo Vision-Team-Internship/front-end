@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Message, Department, Floor, Room } from 'src/model';
+import { Message, Department, Floor, Room, UpdateMessage } from 'src/model';
 
 const httpOption = {
   headers: new HttpHeaders({
@@ -22,7 +22,7 @@ interface roomResponse {
   payload: Room;
 }
 interface MessageResponse {
-  payload: Message;
+  payload: UpdateMessage;
 }
 @Injectable({
   providedIn: 'root',
@@ -38,6 +38,9 @@ export class AdminService {
   private messageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
 
+  private allMessageApiUrl =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=false&isRejected=false';
+
   private highMessageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=false&isRejected=false&feedbackLevel=High';
   private NormalMessageApiUrl =
@@ -47,28 +50,28 @@ export class AdminService {
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=true&isCompleted=false';
 
   private approvedMessageApiUrl =
-    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
+    'https://feedback-project-api.herokuapp.com/api/v1/approveds';
 
   private incompletedMessageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/feedbacks/?isApproved=true&isCompleted=true';
 
   private completedMessageApiUrl =
-    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
+    'https://feedback-project-api.herokuapp.com/api/v1/completeds';
 
   getCompletedMessage() {
     return this.http.get<Message[]>(this.incompletedMessageApiUrl, httpOption);
   }
 
-  completeMessage(id: string, data: Message): Observable<MessageResponse> {
-    return this.http.put<MessageResponse>(
-      `${this.completedMessageApiUrl}/${id}`,
+  completeMessage(data: UpdateMessage): Observable<MessageResponse> {
+    return this.http.post<MessageResponse>(
+      this.completedMessageApiUrl,
       data,
       httpOption
     );
   }
-  approvedMessage(id: string, data: Message): Observable<MessageResponse> {
-    return this.http.put<MessageResponse>(
-      `${this.approvedMessageApiUrl}/${id}`,
+  approvedMessage(data: UpdateMessage): Observable<MessageResponse> {
+    return this.http.post<MessageResponse>(
+      this.approvedMessageApiUrl,
       data,
       httpOption
     );
@@ -78,8 +81,8 @@ export class AdminService {
     return this.http.get<Message[]>(this.inProcessMessageApiUrl, httpOption);
   }
 
-  getMessage() {
-    return this.http.get<Message[]>(this.messageApiUrl, httpOption);
+  getAllMessage() {
+    return this.http.get<Message[]>(this.allMessageApiUrl, httpOption);
   }
 
   getHighMessage() {

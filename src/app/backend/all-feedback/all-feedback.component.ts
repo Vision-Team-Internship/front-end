@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin/admin.service';
-import { Message } from 'src/model';
+import { Message, UpdateMessage } from 'src/model';
 
 @Component({
   selector: 'app-all-feedback',
@@ -10,12 +11,38 @@ import { Message } from 'src/model';
 export class AllFeedbackComponent implements OnInit {
   messages: Message[] = [];
   messageID: string = '';
-  constructor(private messageService: AdminService) {}
+  approvedForm!: FormGroup;
+  constructor(private messageService: AdminService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.messageService.getMessage().subscribe((data: any) => {
-      console.log(data.payload);
+    this.messageService.getAllMessage().subscribe((data: any) => {
+      console.log('All Messages', data.payload);
       this.messages = data.payload;
+    });
+    this.approvedForm = this.fb.group({
+      _id: [''],
+    });
+  }
+  get f() {
+    return this.approvedForm.controls;
+  }
+  approvedMessage(data: any, id: string) {
+    this.f._id.setValue(data._id);
+
+    const msg: UpdateMessage = {
+      note: 'ok',
+      feedback_id: this.f._id.value,
+    };
+    this.messageService.approvedMessage(msg).subscribe((res) => {
+      console.log(res);
+      this.messages = this.messages.filter((msg) => msg._id != id);
+    });
+  }
+
+  deleteMessage(id: string) {
+    this.messageService.deleteMessage(id).subscribe((res) => {
+      console.log(res);
+      this.messages = this.messages.filter((messages) => messages._id != id);
     });
   }
   ok() {
@@ -27,5 +54,4 @@ export class AllFeedbackComponent implements OnInit {
   hideAction() {
     this.messageID = '';
   }
-  deleteMessage(id: string) {}
 }

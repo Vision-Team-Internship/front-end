@@ -62,3 +62,7 @@ export interface Message {
   archivedDate: string;
   url: string;
 }
+export interface UpdateMessage {
+  note: string;
+  feedback_id: string;
+}
