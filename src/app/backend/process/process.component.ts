@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { Message, UpdateMessage } from 'src/model';
 
@@ -13,7 +14,11 @@ export class ProcessComponent implements OnInit {
   messageID: string = '';
   completeMessageForm!: FormGroup;
 
-  constructor(private adminService: AdminService, private fb: FormBuilder) {}
+  constructor(
+    private adminService: AdminService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.adminService.getInProccessMessage().subscribe((data: any) => {
@@ -52,6 +57,9 @@ export class ProcessComponent implements OnInit {
         (inProcessMessage) => inProcessMessage._id != id
       );
     });
+  }
+  msgItem(msg_ID: string) {
+    this.router.navigate(['/d/msg-process', msg_ID]);
   }
   ok() {
     alert('ok');

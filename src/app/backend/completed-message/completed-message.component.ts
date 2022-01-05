@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { Message } from 'src/model';
 
@@ -10,7 +11,7 @@ import { Message } from 'src/model';
 export class CompletedMessageComponent implements OnInit {
   completedMessage: Message[] = [];
   messageID: string = '';
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
     this.adminService.getCompletedMessage().subscribe((data: any) => {
@@ -25,6 +26,9 @@ export class CompletedMessageComponent implements OnInit {
         (completedMessage) => completedMessage._id != id
       );
     });
+  }
+  msgItem(msg_ID: string) {
+    this.router.navigate(['/d/msg-completed', msg_ID]);
   }
   showAction(id: string) {
     this.messageID = id;

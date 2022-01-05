@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard.component';
 import { AllFeedbackComponent } from '../all-feedback/all-feedback.component';
 import { ProcessComponent } from '../process/process.component';
 import { CompletedMessageComponent } from '../completed-message/completed-message.component';
+import { MessageItemComponent } from '../message-item/message-item.component';
 
 const routes: Routes = [
   {
@@ -33,9 +34,19 @@ const routes: Routes = [
     component: MessageComponent,
   },
   {
+    path: 'msg/:id',
+    pathMatch: 'full',
+    component: MessageItemComponent,
+  },
+  {
     path: 'all-msg',
     pathMatch: 'full',
     component: AllFeedbackComponent,
+  },
+  {
+    path: 'all-msg/:id',
+    pathMatch: 'full',
+    component: MessageItemComponent,
   },
   {
     path: 'msg-process',
@@ -43,9 +54,19 @@ const routes: Routes = [
     component: ProcessComponent,
   },
   {
+    path: 'msg-process/:id',
+    pathMatch: 'full',
+    component: MessageItemComponent,
+  },
+  {
     path: 'msg-completed',
     pathMatch: 'full',
     component: CompletedMessageComponent,
+  },
+  {
+    path: 'msg-completed/:id',
+    pathMatch: 'full',
+    component: MessageItemComponent,
   },
   {
     path: '',

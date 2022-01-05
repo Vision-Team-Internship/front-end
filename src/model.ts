@@ -61,6 +61,7 @@ export interface Message {
   rejectedDate: string;
   archivedDate: string;
   url: string;
+  isOpen: boolean;
 }
 export interface UpdateMessage {
   note: string;

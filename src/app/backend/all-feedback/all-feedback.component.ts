@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { Message, UpdateMessage } from 'src/model';
 
@@ -12,7 +13,11 @@ export class AllFeedbackComponent implements OnInit {
   messages: Message[] = [];
   messageID: string = '';
   approvedForm!: FormGroup;
-  constructor(private messageService: AdminService, private fb: FormBuilder) {}
+  constructor(
+    private messageService: AdminService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.messageService.getAllMessage().subscribe((data: any) => {
@@ -44,6 +49,9 @@ export class AllFeedbackComponent implements OnInit {
       console.log(res);
       this.messages = this.messages.filter((messages) => messages._id != id);
     });
+  }
+  msgItem(msg_ID: string) {
+    this.router.navigate(['/d/all-msg', msg_ID]);
   }
   ok() {
     alert('ok');

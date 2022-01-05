@@ -29,7 +29,7 @@
   </div>
 </div>
 <ng-container *ngFor="let item of inProcessMessage">
-  <div class="msg-item" (mouseover)="showAction(item._id)" (mouseleave)="hideAction()">
+  <div class="msg-item" (mouseover)="showAction(item._id)" (mouseleave)="hideAction()" (dblclick)="msgItem(item._id)">
     <div class="card border-right-0 border-top-0"
       [ngClass]="item.feedbackLevel == 'High' ? 'red-border' : 'blue-border'">
       <div class="pr-3 pl-3 pt-3 pb-3">

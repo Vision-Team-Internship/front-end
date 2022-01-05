@@ -67,8 +67,8 @@
 </div>
 <ng-container *ngIf="highFeedback">
   <ng-container *ngFor="let item of highMessages">
-    <div class="msg-item" (mouseover)="showAction(item._id)" (mouseleave)="hideAction()">
-      <div class="card border-left-0 border-right-0 border-top-0">
+    <div class="msg-item" (mouseover)="showAction(item._id)" (mouseleave)="hideAction()" (dblclick)="msgItem(item._id)">
+      <div class="card border-left-0 border-right-0 border-top-0" [ngClass]="item.isOpen == false ? 'card-bg' : ''">
         <div class="pr-3 pl-3 pt-3 pb-3">
           <div class="row justify-content-between">
             <div class="col-md-2">

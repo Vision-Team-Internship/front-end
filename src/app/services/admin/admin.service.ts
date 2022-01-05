@@ -58,6 +58,10 @@ export class AdminService {
   private completedMessageApiUrl =
     'https://feedback-project-api.herokuapp.com/api/v1/completeds';
 
+  getMessageById(id: string) {
+    return this.http.get<Message[]>(`${this.messageApiUrl}/${id}`, httpOption);
+  }
+
   getCompletedMessage() {
     return this.http.get<Message[]>(this.incompletedMessageApiUrl, httpOption);
   }

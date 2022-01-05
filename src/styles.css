@@ -53,6 +53,12 @@ body {
   -o-transition: all 0.3s;
   transition: all 0.3s;
   position: relative;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 #sidebar .overflow {
@@ -214,9 +220,16 @@ div.a {
 .icon-green :hover {
   color: rgb(48, 156, 26);
 }
-
-.nav-msg .primary {
+.nav-msg {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   cursor: pointer;
+}
+.nav-msg .primary {
   color: #d93025;
 }
 
@@ -229,7 +242,6 @@ div.a {
 }
 
 .nav-msg .normal {
-  cursor: pointer;
   color: #1a73e8;
 }
 
@@ -240,7 +252,15 @@ div.a {
 .nav-msg .normal .card-bg:hover {
   background-color: rgb(221, 221, 221);
 }
-
+.msg-item {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
 .msg-item .card {
   border-radius: 0;
 }
@@ -256,7 +276,9 @@ div.a {
 .msg-item strong {
   font-weight: 500;
 }
-
+.msg-item .card-bg {
+  background-color: rgba(238, 238, 238, 0.76);
+}
 .msg-item .card:hover {
   -moz-box-shadow: 0 0 3px rgb(139, 139, 139);
   -webkit-box-shadow: 0 0 3px rgb(139, 139, 139);

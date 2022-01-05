@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { Message, UpdateMessage } from 'src/model';
 
@@ -18,7 +19,11 @@ export class MessageComponent implements OnInit {
   highFeedback = true;
   normalFeedback = false;
   approvedForm!: FormGroup;
-  constructor(private messageService: AdminService, private fb: FormBuilder) {}
+  constructor(
+    private messageService: AdminService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.messageService.getHighMessage().subscribe((data: any) => {
@@ -83,8 +88,12 @@ export class MessageComponent implements OnInit {
     this.highFeedback = true;
     this.normalFeedback = false;
   }
+  msgItem(msg_ID: string) {
+    this.router.navigate(['/d/msg', msg_ID]);
+  }
   ok() {
     console.log('ok');
+    alert('ok');
   }
   showAction(id: string) {
     this.messageID = id;
