@@ -12,14 +12,14 @@ export class FormComponent implements OnInit {
   constructor(private service: Service, private fb: FormBuilder) {}
 
   submitForm: FormGroup = new FormGroup({});
-
   floors: Floor[] = [];
   departments: Department[] = [];
   rooms: Room[] = [];
   submitted = false;
+  floorID: string | undefined = '';
+  departmentID: string | undefined = '';
+  roomID: string | undefined = '';
 
-  floorID: string | null = '';
-  departmentID: string | null = '';
   ngOnInit(): void {
     this.service.getfloor().subscribe((data: any) => {
       console.log(data);
@@ -43,29 +43,24 @@ export class FormComponent implements OnInit {
     });
   }
 
-  test() {
-    console.log('test');
+  getRoomID(id: any) {
+    console.log('RoomID', id);
+    this.roomID = id;
+    this.submitForm.controls['room_id'].setValue(id);
   }
-
-  setFloorID(floor: any) {
-    console.log('Floor', floor);
-    this.floorID = floor;
-    this.departmentID = '';
-    // this.message.department_id = '';
-    this.submitForm.controls['department_id'].setValue('');
-    // this.displayDP = false;
-    // this.displayRoom = false;
-  }
-  setDepartmentID(depart: any) {
-    console.log('departmentId', depart);
-    this.departmentID = depart;
-    // this.message.room_id = '';
+  getDepartmentID(id: any) {
+    console.log('DepartmentID', id);
+    this.departmentID = id;
+    this.submitForm.controls['department_id'].setValue(id);
     this.submitForm.controls['room_id'].setValue('');
   }
-  getRoomID(room: any) {
-    console.log('departmentId', room);
+  getFloorID(id: any) {
+    console.log(id);
+    this.floorID = id;
+    this.departmentID = '';
+    this.submitForm.controls['floor_id'].setValue(id);
+    this.submitForm.controls['department_id'].setValue('');
   }
-
   sendMessage(): void {
     let feedBackType = '';
     let uniqueIDs = [''];
@@ -81,6 +76,7 @@ export class FormComponent implements OnInit {
         }
       }
     }
+    console.log(this.submitForm.value);
 
     const data: SendMessage = {
       title: this.submitForm.controls['title'].value,
@@ -89,8 +85,7 @@ export class FormComponent implements OnInit {
       feedbackType: feedBackType,
       uniqueIDs: uniqueIDs,
     };
-
-    console.log(this.submitForm.value);
+    console.log(data);
     this.service.sendMessage(data).subscribe(
       (response) => {
         console.log(response);
@@ -107,24 +102,5 @@ export class FormComponent implements OnInit {
   newMsg(): void {
     this.submitted = false;
     this.submitForm.reset();
-  }
-
-  displayDP = false;
-  displayRoom = false;
-
-  showDP() {
-    this.displayDP = true;
-  }
-  showRoom() {
-    this.displayRoom = true;
-  }
-  hideDP() {
-    this.displayDP = false;
-    this.departmentID = null;
-    this.submitForm.controls['department_id'].setValue('');
-  }
-  hideRoom() {
-    this.displayRoom = false;
-    this.submitForm.controls['room_id'].setValue('');
   }
 }

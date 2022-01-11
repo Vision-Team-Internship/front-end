@@ -40,8 +40,7 @@
 <ng-container *ngFor="let item of messages">
   <div class="msg-item" (mouseover)="showAction(item._id)" (mouseleave)="hideAction()" (dblclick)="msgItem(item._id)">
     <div class="card border-right-0 border-top-0"
-      [ngClass]="item.feedbackLevel == 'High' ? 'red-border' : 'blue-border'"
-      [ngClass]="item.isOpen == false ? 'card-bg' : ''">
+      [ngClass]="{'red-border': item.feedbackLevel == 'High','blue-border': item.feedbackLevel == 'Medium','card-bg': item.isOpen == false}">
       <div class="pr-3 pl-3 pt-3 pb-3">
         <div class="row justify-content-between">
           <div class="col-md-2">

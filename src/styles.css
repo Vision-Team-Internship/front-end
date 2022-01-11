@@ -4,7 +4,9 @@ body {
   color: #202124;
   background-color: #f6f7fa !important;
 }
-
+.container {
+  max-width: 1400px !important;
+}
 .cs-shadow {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -295,4 +297,17 @@ div.a {
   margin-top: 1px;
   margin-bottom: 1px;
   border-left: 5px solid #1a73e8;
+}
+.floor {
+  height: 335px;
+  overflow-y: auto;
+}
+.floor::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+.floor::-webkit-scrollbar-thumb {
+  background: #afb3b6;
+  border-radius: 5px;
 }
