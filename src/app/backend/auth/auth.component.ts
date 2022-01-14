@@ -15,7 +15,6 @@ export class AuthComponent implements OnInit {
   constructor(
     private auth: AdminService,
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router
   ) {}
 
